@@ -1,0 +1,52 @@
+Signals->
+They are used for catching interrupts from the input devices passed through operating system.
+There are two types of interrupts- 
+Maskable and Non-maskable
+
+Makable interrupts can be handles through signal handler function while non-maskable cannot.
+
+Every program reacts to the software interrupt based on the definition of the user in program for signal handling. If no such program is coded, the interrupts perform the default signal processing as defined in the standards.
+
+The signal perform some action given as follows-
+
+ Term   Default action is to terminate the process.
+
+       Ign    Default action is to ignore the signal.
+
+       Core   Default action is to terminate the process and  dump  core  
+
+       Stop   Default action is to stop the process.
+
+       Cont   Default  action  is  to  continue the process if it is currently stopped.
+
+When an interrupt is generated a signal handler function is called where the bahaviour of the signal is defined that is to be executed by the program. A functional ponter is passed to the signal or sigaction function which calls the signal handler when an interrupt is received.
+
+
+		 Signal     Value     Action   Comment
+       ──────────────────────────────────────────────────────────────────────
+       SIGHUP        1       Term    Hangup detected on controlling terminal
+                                     or death of controlling process
+       SIGINT        2       Term    Interrupt from keyboard
+       SIGQUIT       3       Core    Quit from keyboard
+       SIGILL        4       Core    Illegal Instruction
+       SIGABRT       6       Core    Abort signal from abort(3)
+       SIGFPE        8       Core    Floating point exception
+       SIGKILL       9       Term    Kill signal
+       SIGSEGV      11       Core    Invalid memory reference
+       SIGPIPE      13       Term    Broken pipe: write to pipe with no
+                                     readers
+       SIGALRM      14       Term    Timer signal from alarm(2)
+       SIGTERM      15       Term    Termination signal
+       SIGUSR1   30,10,16    Term    User-defined signal 1
+       SIGUSR2   31,12,17    Term    User-defined signal 2
+       SIGCHLD   20,17,18    Ign     Child stopped or terminated
+       
+
+The two methods for defining signal handlers on a specific interrupt are-
+
+SIGACTION->   int sigaction(int signum, const struct sigaction *act,struct sigaction *oldact);
+SIGNAL->	  int signal(int signum, &signal_handler);
+
+Thus whenever a signal is passed by operating system the corresponding signal handler function is activated and the action is performed.
+
+/*************End Of Report*********************/
